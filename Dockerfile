@@ -51,6 +51,9 @@ ARG MODEL_TYPE
 WORKDIR /comfyui
 RUN mkdir -p models/checkpoints
 RUN mkdir -p models/upscale_models
+# Debugging: List files after creating directories
+RUN ls -l models/checkpoints
+RUN ls -l models/upscale_models
 # Download checkpoints/vae/LoRA to include in image based on model type
 RUN wget -O models/checkpoints/flux1-dev-fp8.safetensors https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev-fp8.safetensors
 RUN wget -O models/upscale_models/RealESRGAN_x2.pth https://huggingface.co/sberbank-ai/Real-ESRGAN/resolve/main/RealESRGAN_x2.pth
