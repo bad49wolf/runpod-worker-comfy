@@ -51,8 +51,11 @@ ARG MODEL_TYPE
 WORKDIR /comfyui
 
 # Download checkpoints/vae/LoRA to include in image based on model type
-RUN wget -O models/checkpoints/flux1-dev-fp8.safetensors https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev-fp8.safetensors
-RUN wget -O models/upscale_models/RealESRGAN_x2.pth https://huggingface.co/sberbank-ai/Real-ESRGAN/resolve/main/RealESRGAN_x2.pth
+RUN wget -P ./models/text_encoders https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors
+RUN wget -P ./models/text_encoders https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp16.safetensors
+RUN wget -P ./models/vae https://huggingface.co/Comfy-Org/Lumina_Image_2.0_Repackaged/resolve/main/split_files/vae/ae.safetensors
+RUN wget -P ./models/diffusion_models https://huggingface.co/Comfy-Org/FLUX.1-Krea-dev_ComfyUI/resolve/main/split_files/diffusion_models/flux1-krea-dev_fp8_scaled.safetensors
+RUN wget -P ./models/upscale_models https://huggingface.co/sberbank-ai/Real-ESRGAN/resolve/main/RealESRGAN_x2.pth
 
 # Stage 3: Final image
 FROM base as final
