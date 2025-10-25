@@ -32,7 +32,6 @@ WORKDIR /comfyui
 # Install ComfyUI dependencies
 RUN pip3 install --upgrade --no-cache-dir torch==2.8.0 torchvision torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cu128 \
     && pip3 install --upgrade -r requirements.txt
-RUN pip3 install flash-attn --no-build-isolation
 # Install runpod
 RUN pip3 install runpod requests
 
